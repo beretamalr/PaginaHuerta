@@ -1,0 +1,637 @@
+/* Formulario de contacto centrado y elegante */
+.contacto-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh;
+}
+#contacto-form {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(60,185,23,0.10);
+    padding: 40px 32px 32px 32px;
+    max-width: 400px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+.input-group label {
+    font-size: 16px;
+    color: #388E3C;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+.input-group input,
+.input-group textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 8px;
+    border: 1.5px solid #dadce0;
+    font-size: 16px;
+    background: #f8f9fa;
+    margin-bottom: 8px;
+    box-shadow: 0 1px 4px rgba(60,185,23,0.08);
+    resize: none;
+}
+.submit-btn {
+    background: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 14px;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(60,185,23,0.10);
+    transition: background 0.3s;
+    width: 100%;
+}
+.submit-btn:hover {
+    background: #388E3C;
+}
+/* Blog visual moderno */
+.blog-section {
+    max-width: 1100px;
+    margin: 48px auto 0 auto;
+    padding: 0 24px;
+}
+.blog-titulo {
+    text-align: center;
+    font-size: 2.2rem;
+    color: #388E3C;
+    margin-bottom: 36px;
+}
+.blog-grid {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.blog-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(60,185,23,0.10);
+    padding: 24px 18px;
+    text-align: center;
+    width: 320px;
+    transition: box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.blog-card:hover {
+    box-shadow: 0 4px 24px rgba(60,185,23,0.18);
+}
+.blog-img {
+    width: 100%;
+    max-width: 220px;
+    height: 140px;
+    object-fit: cover;
+    margin-bottom: 16px;
+    border-radius: 12px;
+    box-shadow: 0 1px 6px rgba(60,185,23,0.10);
+}
+.blog-card-titulo {
+    font-size: 1.25rem;
+    color: #388E3C;
+    margin-bottom: 8px;
+}
+.blog-card-resumen {
+    font-size: 1rem;
+    color: #222;
+    margin-bottom: 16px;
+}
+.btn-blog {
+    background: #4CAF50;
+    color: #fff;
+    border-radius: 8px;
+    padding: 10px 22px;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(60,185,23,0.10);
+    transition: background 0.2s, transform 0.2s;
+}
+.btn-blog:hover {
+    background: #388E3C;
+    transform: translateY(-2px) scale(1.04);
+}
+.btn-ver-productos {
+    font-size: 1.15rem;
+    padding: 16px 38px;
+    background: #388E3C;
+    color: #fff;
+    border-radius: 12px;
+    font-weight: 600;
+    box-shadow: 0 2px 12px rgba(60,185,23,0.10);
+    transition: background 0.2s, transform 0.2s;
+    text-decoration: none;
+    margin-top: 12px;
+}
+.btn-ver-productos:hover {
+    background: #4CAF50;
+    transform: translateY(-2px) scale(1.04);
+}
+/* Logo centrado y tamaño adecuado para formularios */
+#logo-huerta {
+    display: block;
+    margin: 40px auto 18px auto;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(60,185,23,0.10);
+}
+
+/* Centrar el formulario de inicio de sesión */
+#iniciosesion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(60,185,23,0.10);
+    padding: 40px 32px 32px 32px;
+    margin: 0 auto 32px auto;
+    max-width: 400px;
+}
+
+/* Ajuste para el formulario de registro */
+#registro {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(60,185,23,0.10);
+    padding: 40px 32px 32px 32px;
+    margin: 0 auto 32px auto;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* Perfil de usuario */
+.perfil-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+}
+.perfil-card {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.09);
+    padding: 32px 36px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    max-width: 340px;
+    width: 100%;
+}
+.perfil-foto {
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 12px;
+    border: 3px solid #e0e0e0;
+}
+.perfil-info {
+    text-align: center;
+    margin-bottom: 10px;
+}
+.perfil-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+.btn-logout {
+    background: #e74c3c;
+    color: #fff;
+}
+/* Diseño de tienda: grid con filtros y productos */
+.tienda-main {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 40px;
+    max-width: 1100px;
+    margin: 48px auto 0 auto;
+    padding: 0 24px;
+}
+.productos-grid-tienda {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+.producto-card-tienda {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(60,185,23,0.10);
+    padding: 24px 18px;
+    text-align: center;
+    width: 220px;
+    transition: box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.producto-card-tienda:hover {
+    box-shadow: 0 4px 24px rgba(60,185,23,0.18);
+}
+.producto-img-tienda {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    margin-bottom: 16px;
+    border-radius: 12px;
+    box-shadow: 0 1px 6px rgba(60,185,23,0.10);
+}
+.producto-card-tienda h3 {
+    font-size: 1.1rem;
+    color: #388E3C;
+    margin-bottom: 8px;
+}
+.producto-card-tienda p {
+    font-size: 1rem;
+    color: #222;
+    margin-bottom: 12px;
+}
+/* Banner principal con imagen de fondo */
+.banner {
+    width: 100%;
+    min-height: 260px;
+    background: url('img/frutas-y-verduras.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.banner::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(60,185,23,0.18);
+}
+.banner-content {
+    position: relative;
+    z-index: 1;
+    background: rgba(255,255,255,0.85);
+    border-radius: 16px;
+    padding: 32px 40px;
+    text-align: center;
+    box-shadow: 0 2px 16px rgba(60,185,23,0.10);
+}
+.banner-content h1 {
+    font-size: 2.5rem;
+    color: #388E3C;
+    margin-bottom: 12px;
+}
+.banner-content p {
+    font-size: 1.2rem;
+    color: #222;
+}
+
+/* Productos destacados */
+.destacados {
+    max-width: 1100px;
+    margin: 48px auto 0 auto;
+    padding: 0 24px;
+}
+.destacados-titulo {
+    text-align: center;
+    font-size: 2rem;
+    color: #388E3C;
+    margin-bottom: 32px;
+}
+.productos-grid {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.producto-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(60,185,23,0.10);
+    padding: 24px 18px;
+    text-align: center;
+    width: 220px;
+    transition: box-shadow 0.2s;
+}
+.producto-card:hover {
+    box-shadow: 0 4px 24px rgba(60,185,23,0.18);
+}
+.producto-img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    margin-bottom: 16px;
+    border-radius: 12px;
+    box-shadow: 0 1px 6px rgba(60,185,23,0.10);
+}
+/* Centrar el formulario y estilos para iconos en inputs */
+#registro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.campo-icono {
+    width: 100%;
+    max-width: 320px;
+}
+.input-icono {
+    display: flex;
+    align-items: center;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1.5px solid #dadce0;
+    margin-bottom: 12px;
+    box-shadow: 0 1px 4px rgba(60,185,23,0.08);
+}
+.input-icono .icono {
+    font-size: 20px;
+    color: #388E3C;
+    margin: 0 12px;
+}
+.input-icono input {
+    border: none;
+    background: transparent;
+    padding: 14px 8px;
+    font-size: 17px;
+    width: 100%;
+    outline: none;
+}
+/* Estilos para formularios elegantes en registro e inicio de sesión */
+.campo label {
+    font-size: 16px;
+    color: #388E3C;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+/* Encabezado moderno y fijo */
+.main-header {
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(60,64,67,0.10);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.header-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 24px;
+}
+.header-logo {
+    height: 40px;
+    width: auto;
+}
+.header-nav {
+    display: flex;
+    gap: 24px;
+}
+.nav-link {
+    color: #388E3C;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 500;
+    padding: 8px 18px;
+    border-radius: 20px;
+    transition: background 0.2s, color 0.2s;
+}
+.nav-link:hover {
+    background: #e8f5e9;
+    color: #222;
+}
+/* Modal emergente para mensajes de registro */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background: rgba(66,133,244,0.15);
+    justify-content: center;
+    align-items: center;
+}
+
+#registro{
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(60,185,23,0.10);
+    padding: 40px 32px 32px 32px;
+    margin: 48px auto 0 auto;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form label {
+    align-self: flex-start;
+    font-size: 15px;
+    color: #444;
+    margin-bottom: 4px;
+    margin-top: 12px;
+}
+form input {
+    width: 100%;
+    max-width: 320px;
+    padding: 14px 16px;
+    border-radius: 8px;
+    border: 1.5px solid #dadce0;
+    font-size: 17px;
+    background: #f8f9fa;
+    margin-bottom: 12px;
+    transition: border 0.2s, box-shadow 0.2s;
+    box-shadow: 0 1px 4px rgba(60,185,23,0.08);
+}
+
+form input:focus {
+    border: 2px solid #388E3C;
+    outline: none;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(60,185,23,0.15);
+}
+
+form button {
+    margin-top: 24px;
+    width: 100%;
+    max-width: 320px;
+    background: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 14px;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(60,185,23,0.10);
+    transition: background 0.3s;
+}
+form button:hover {
+    background: #388E3C;
+}
+
+
+#mensaje {
+    color: #d93025;
+    font-size: 14px;
+    margin-top: 8px;
+    min-height: 18px;
+}
+
+#btn-registro{
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#btn-registro:hover{
+    background-color: #2e8b13;
+    color: white;
+}
+
+
+footer{
+    position: relative;
+    width: 100%;
+    text-align: center;
+}
+
+button, .btn {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover, .btn:hover {
+  background: #388E3C;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra horizontalmente los hijos */
+  width: 100%;
+  max-width: 400px; /* Opcional, para limitar el ancho */
+  margin: 0 auto;   /* Centra el contenedor en la página */
+}
+body {
+    background: #f2f2f2;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
+    color: #222;
+}
+.precio-frutas {
+    color: #222;
+    font-size: 1rem;
+    margin-top: 8px;
+}
+
+#precio-verduras {
+    color: #222;
+    font-size: 1rem;
+    margin-top: 8px;
+}
+
+#precio-frutas {
+    color: #222;
+    font-size: 1rem;
+    margin-top: 8px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

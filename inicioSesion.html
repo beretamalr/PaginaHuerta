@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesión</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="funciones.js" defer></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+    <img src="img/logo.png" alt="Logo Huerta" id="logo-huerta">
+    <div id="iniciosesion">
+        <form autocomplete="off" onsubmit="event.preventDefault(); iniciarSesion();">
+            <h2 style="text-align:center;">Iniciar Sesión</h2>
+            <!-- Campo para el usuario con icono -->
+            <div class="campo campo-icono">
+                <label for="usuario">Usuario</label>
+                <div class="input-icono">
+                    <span class="icono">&#128100;</span>
+                    <input type="text" id="usuario" name="usuario" required>
+                </div>
+            </div>
+            <!-- Campo para la contraseña con icono -->
+            <div class="campo campo-icono">
+                <label for="contrasena">Contraseña</label>
+                <div class="input-icono">
+                    <span class="icono">&#128274;</span>
+                    <input type="password" id="contrasena" name="contrasena" required>
+                </div>
+            </div>
+            <button type="submit" id="btn-iniciarsesion">Ingresar</button>
+            <p id="mensaje"></p>
+            <button type="button" onclick="iniciarSesionGoogle()" style="margin-top:12px;">
+                <img src="logos/google-logo-2025-6ffb.png" alt="Iniciar sesión con Google" style="height: 20px; margin-right: 10px; vertical-align: middle;">
+                Iniciar sesión con Google
+            </button>
+            <button type="button" onclick="loginConFacebook()" style="margin-top:8px;">
+                <img src="logos/facebook-logo-png-2320.png" alt="Iniciar sesión con Facebook" style="height: 20px; margin-right: 10px; vertical-align: middle;">
+                Iniciar sesión con Facebook
+            </button>
+            <button type="button" onclick="loginConMicrosoft()" style="margin-top:8px;">
+                <img src="logos/Microsoft-Logo.png" alt="Iniciar sesión con Microsoft" style="height: 20px; margin-right: 10px; vertical-align: middle;">
+                Iniciar sesión con Microsoft
+            </button>
+            <p style="margin-top:16px;">¿No tienes una cuenta?</p>
+            <button type="button" onclick="window.location.href='registro.html'">📝 Registrarse ahora</button>
+        </form>
+    </div>
+</body>
+<footer>
+    <div class="footer-container" id="footer">
+        <p>&copy; 2025 La Huerta.</p>
+    </div>
+</footer>
+</html>

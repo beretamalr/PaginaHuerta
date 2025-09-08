@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="funciones.js" defer></script>
+</head>
+<body>
+    <img src="img/logo.png" alt="Logo Huerta" id="logo-huerta">
+    <div id="registro">
+        <!-- Formulario de registro de usuario -->
+        <form autocomplete="off" onsubmit="event.preventDefault(); registrarUsuario();">
+            <h2 style="text-align:center;">Registro</h2>
+            <!-- Campo para el nombre de usuario con icono -->
+            <div class="campo campo-icono">
+                <label for="nuevo-usuario">Nombre de usuario</label>
+                <div class="input-icono">
+                    <span class="icono"><!-- icono usuario -->&#128100;</span>
+                    <input type="text" id="nuevo-usuario" name="nuevo-usuario" required>
+                </div>
+            </div>
+            <!-- Campo para el correo electrónico con icono -->
+            <div class="campo campo-icono">
+                <label for="nuevo-correo">Correo electrónico</label>
+                <div class="input-icono">
+                    <span class="icono"><!-- icono correo -->&#9993;</span>
+                    <input type="email" id="nuevo-correo" name="nuevo-correo" required>
+                </div>
+            </div>
+            <!-- Campo para la contraseña con icono -->
+            <div class="campo campo-icono">
+                <label for="nueva-contrasena">Contraseña</label>
+                <div class="input-icono">
+                    <span class="icono"><!-- icono clave -->&#128274;</span>
+                    <input type="password" id="nueva-contrasena" name="nueva-contrasena" required>
+                </div>
+            </div>
+            <!-- Botón para enviar el formulario -->
+            <button type="submit" id="btn-registro">Registrarse</button>
+            <!-- Mensaje de error o información -->
+            <p id="mensaje"></p>
+        </form>
+        </div>
+
+        <!-- Modal para el mensaje emergente de registro exitoso-->
+        <div id="modal" class="modal">
+                            <!-- Modal emergente para mostrar mensajes al usuario -->
+                            <div class="modal-content">
+                                <!-- Botón para cerrar el modal -->
+                                <span id="cerrar-modal" class="close">&times;</span>
+                                <!-- Mensaje que se muestra en el modal -->
+                                <p id="modal-mensaje"></p>
+                                <!-- Botón para ir a la página de inicio -->
+                                <button id="modal-index-btn" class="btn" style="margin-top:20px;">Ir a inicio</button>
+                            </div>
+        </div>
+        </form>
+    </div>
+</body>
+    <!-- Pie de página con derechos de autor -->
+    <footer>
+        <p>&copy; 2025 Huerta.</p>
+    </footer>
