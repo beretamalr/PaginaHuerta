@@ -15,7 +15,7 @@ function iniciarSesion() {
         // Validar usuario y contraseña
         if (usuario === "admin" && contrasena === "1234") {
             alert("Inicio de sesión exitoso");
-            window.location.href = "index.html";
+            window.location.href = "index2.html";
             return true;
         } else if (usuario !== "admin") {
             document.getElementById("errorUsuario").textContent = "Usuario incorrecto";
@@ -37,4 +37,13 @@ function iniciarSesion() {
             return false;
         }
     }
+}
+// Al iniciar sesión exitosamente
+localStorage.setItem('usuarioLogueado', 'true');
+
+// Al cargar index.html
+window.onload = function() {
+  if (localStorage.getItem('usuarioLogueado') === 'true') {
+    document.getElementById('btnInicioSesion').style.display = 'none';
+  }
 }
