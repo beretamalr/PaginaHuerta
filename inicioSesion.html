@@ -11,7 +11,7 @@
 <body>
     <img src="img/logo.png" alt="Logo Huerta" id="logo-huerta">
     <div id="iniciosesion">
-        <form autocomplete="off" onsubmit="event.preventDefault(); iniciarSesion();">
+        <form autocomplete="off" action ="index.html" onsubmit="event.preventDefault(); iniciarSesion();">
             <h2 style="text-align:center;">Iniciar Sesión</h2>
             <!-- Campo para el usuario con icono -->
             <div class="campo campo-icono">
@@ -19,6 +19,7 @@
                 <div class="input-icono">
                     <span class="icono">&#128100;</span>
                     <input type="text" id="usuario" name="usuario" required>
+                    <div><p id="errorUsuario" style="color: red"></p></div>
                 </div>
             </div>
             <!-- Campo para la contraseña con icono -->
@@ -27,9 +28,11 @@
                 <div class="input-icono">
                     <span class="icono">&#128274;</span>
                     <input type="password" id="contrasena" name="contrasena" required>
+                    <div><p id="errorContrasena" style="color: red"></div> 
                 </div>
             </div>
             <button type="submit" id="btn-iniciarsesion">Ingresar</button>
+            <div> <p id="errorGeneral" style="color: red"></div>
             <p id="mensaje"></p>
             <button type="button" onclick="iniciarSesionGoogle()" style="margin-top:12px;">
                 <img src="logos/google-logo-2025-6ffb.png" alt="Iniciar sesión con Google" style="height: 20px; margin-right: 10px; vertical-align: middle;">

@@ -1,5 +1,5 @@
 // Función para manejar el inicio de sesión
-function inicioSesion() {
+function iniciarSesion() {
 
     // Obtener los valores de los campos de entrada
     var usuario = document.getElementById("usuario").value;
@@ -30,4 +30,6 @@ function inicioSesion() {
             document.getElementById("errorContrasena").textContent = "Por favor, ingrese la contraseña";
         }
     }
+
+    window.location.href = "index.html";
 }
