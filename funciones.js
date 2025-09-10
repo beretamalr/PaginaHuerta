@@ -7,10 +7,21 @@ function iniciarSesion() {
     document.getElementById("errorUsuario").textContent = "";
     document.getElementById("errorContrasena").textContent = "";
     document.getElementById("errorGeneral").textContent = "";
+    // Obtener todos los usuarios registrados
+    const usuarios = JSON.parse(localStorage.getItem('usuariosRegistrados')) || [];
+    const usuarioRegistrado = usuarios.find(u => u.nombre === usuario && u.contrasena === contrasena);
+
+    if (usuarioRegistrado) {
+        alert("Inicio de sesión exitoso");
+        guardarDatosUsuario(usuarioRegistrado.nombre, usuarioRegistrado.correo);
+        window.location.href = "index2.html";
+        return true;
+    }
 
     // Validar usuario y contraseña
     if (usuario === "admin" && contrasena === "1234") {
         alert("Inicio de sesión exitoso");
+        guardarDatosUsuario(usuario, "admin@ejemplo.com");
         window.location.href = "index2.html";
         return true;
     } else if (usuario === "" && contrasena === "") {
@@ -32,6 +43,32 @@ function iniciarSesion() {
         document.getElementById("errorContrasena").textContent = "Contraseña incorrecta";
         return false;
     }
+}
+
+//Funcion para registrar un usuario
+function registrarUsuario() {
+    const nombre = document.getElementById('nuevo-usuario').value;
+    const correo = document.getElementById('nuevo-correo').value;
+    const contrasena = document.getElementById('nueva-contrasena').value;
+
+    // Obtener usuarios existentes o crear un arreglo vacío
+    let usuarios = JSON.parse(localStorage.getItem('usuariosRegistrados')) || [];
+
+    // Verificar si el correo ya está registrado
+    const existe = usuarios.some(u => u.correo === correo);
+    if (existe) {
+        document.getElementById('modal-mensaje').textContent = 'El correo ya está registrado.';
+        document.getElementById('modal').style.display = 'block';
+        return;
+    }
+
+    // Agregar el nuevo usuario
+    usuarios.push({ nombre, correo, contrasena });
+
+    localStorage.setItem('usuariosRegistrados', JSON.stringify(usuarios));
+    // Opcional: mostrar mensaje de éxito
+    document.getElementById('modal-mensaje').textContent = '¡Registro exitoso!';
+    document.getElementById('modal').style.display = 'block';
 }
 
 // Renderizar el botón de Google y manejar el login con Google
@@ -61,76 +98,3 @@ function loginConFacebook() {
 function loginConMicrosoft() {
     alert("Función de Microsoft no implementada");
 }
-
-
-// Función para agregar productos al carrito usando localStorage
-function agregarAlCarrito(producto) {
-    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-    const index = carrito.findIndex(item => item.id === producto.id);
-    if (index !== -1) {
-        carrito[index].cantidad += producto.cantidad;
-    } else {
-        carrito.push(producto);
-    }
-    localStorage.setItem('carrito', JSON.stringify(carrito));
-}
-let productoSeleccionado = null;
-
-// Función para abrir el modal y seleccionar la cantidad
-function abrirModalCantidad(producto) {
-    productoSeleccionado = producto;
-    document.getElementById('modal-nombre').textContent = producto.nombre;
-    document.getElementById('modal-imagen').src = producto.imagen;
-    document.getElementById('modal-cantidad-input').value = 1;
-    document.getElementById('modal-cantidad').style.display = 'flex';
-}
-
-// Función para cerrar el modal
-function cerrarModalCantidad() {
-    document.getElementById('modal-cantidad').style.display = 'none';
-    productoSeleccionado = null;
-}
-
-// Función para confirmar la cantidad y agregar al carrito
-function confirmarCantidad() {
-    const cantidad = parseInt(document.getElementById('modal-cantidad-input').value);
-    if (productoSeleccionado && cantidad > 0) {
-        agregarAlCarrito({
-            ...productoSeleccionado,
-            cantidad
-        });
-        cerrarModalCantidad();
-        alert('🛒Producto agregado al carrito');
-    }
-}
-
-function mostrarCarrito() {
-    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-    const tbody = document.querySelector('#tabla-carrito tbody');
-    tbody.innerHTML = '';
-    let total = 0;
-    carrito.forEach((producto, i) => {
-        const totalProducto = producto.precio * producto.cantidad;
-        total += totalProducto;
-        const fila = document.createElement('tr');
-        fila.innerHTML = `
-            <td>${producto.nombre}</td>
-            <td>${producto.cantidad}</td>
-            <td>$${producto.precio}</td>
-            <td>$${totalProducto}</td>
-            <td><button onclick="eliminarDelCarrito(${i})">Eliminar</button></td>
-        `;
-        tbody.appendChild(fila);
-    });
-    document.getElementById('total-carrito').textContent = total;
-}
-
-function eliminarDelCarrito(index) {
-    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-    carrito.splice(index, 1);
-    localStorage.setItem('carrito', JSON.stringify(carrito));
-    mostrarCarrito();
-}
-
-window.onload = mostrarCarrito;
-
