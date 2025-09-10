@@ -61,3 +61,76 @@ function loginConFacebook() {
 function loginConMicrosoft() {
     alert("Función de Microsoft no implementada");
 }
+
+
+// Función para agregar productos al carrito usando localStorage
+function agregarAlCarrito(producto) {
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    const index = carrito.findIndex(item => item.id === producto.id);
+    if (index !== -1) {
+        carrito[index].cantidad += producto.cantidad;
+    } else {
+        carrito.push(producto);
+    }
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+}
+let productoSeleccionado = null;
+
+// Función para abrir el modal y seleccionar la cantidad
+function abrirModalCantidad(producto) {
+    productoSeleccionado = producto;
+    document.getElementById('modal-nombre').textContent = producto.nombre;
+    document.getElementById('modal-imagen').src = producto.imagen;
+    document.getElementById('modal-cantidad-input').value = 1;
+    document.getElementById('modal-cantidad').style.display = 'flex';
+}
+
+// Función para cerrar el modal
+function cerrarModalCantidad() {
+    document.getElementById('modal-cantidad').style.display = 'none';
+    productoSeleccionado = null;
+}
+
+// Función para confirmar la cantidad y agregar al carrito
+function confirmarCantidad() {
+    const cantidad = parseInt(document.getElementById('modal-cantidad-input').value);
+    if (productoSeleccionado && cantidad > 0) {
+        agregarAlCarrito({
+            ...productoSeleccionado,
+            cantidad
+        });
+        cerrarModalCantidad();
+        alert('🛒Producto agregado al carrito');
+    }
+}
+
+function mostrarCarrito() {
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    const tbody = document.querySelector('#tabla-carrito tbody');
+    tbody.innerHTML = '';
+    let total = 0;
+    carrito.forEach((producto, i) => {
+        const totalProducto = producto.precio * producto.cantidad;
+        total += totalProducto;
+        const fila = document.createElement('tr');
+        fila.innerHTML = `
+            <td>${producto.nombre}</td>
+            <td>${producto.cantidad}</td>
+            <td>$${producto.precio}</td>
+            <td>$${totalProducto}</td>
+            <td><button onclick="eliminarDelCarrito(${i})">Eliminar</button></td>
+        `;
+        tbody.appendChild(fila);
+    });
+    document.getElementById('total-carrito').textContent = total;
+}
+
+function eliminarDelCarrito(index) {
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    carrito.splice(index, 1);
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+    mostrarCarrito();
+}
+
+window.onload = mostrarCarrito;
+
