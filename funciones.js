@@ -7,15 +7,17 @@ function iniciarSesion() {
     document.getElementById("errorUsuario").textContent = "";
     document.getElementById("errorContrasena").textContent = "";
     document.getElementById("errorGeneral").textContent = "";
-    const usuarioRegistrado = JSON.parse(localStorage.getItem('usuarioRegistrado'));
+    // Obtener todos los usuarios registrados
+    const usuarios = JSON.parse(localStorage.getItem('usuariosRegistrados')) || [];
+    const usuarioRegistrado = usuarios.find(u => u.nombre === usuario && u.contrasena === contrasena);
 
-    if (usuarioRegistrado && usuarioRegistrado.nombre === usuario && usuarioRegistrado.contrasena === contrasena) {
+    if (usuarioRegistrado) {
         alert("Inicio de sesión exitoso");
         guardarDatosUsuario(usuarioRegistrado.nombre, usuarioRegistrado.correo);
         window.location.href = "index2.html";
         return true;
     }
-    
+
     // Validar usuario y contraseña
     if (usuario === "admin" && contrasena === "1234") {
         alert("Inicio de sesión exitoso");
@@ -49,10 +51,21 @@ function registrarUsuario() {
     const correo = document.getElementById('nuevo-correo').value;
     const contrasena = document.getElementById('nueva-contrasena').value;
 
-    // Guardar los datos en localStorage (puedes usar un objeto para varios usuarios)
-    const usuario = { nombre, correo, contrasena };
-    localStorage.setItem('usuarioRegistrado', JSON.stringify(usuario));
+    // Obtener usuarios existentes o crear un arreglo vacío
+    let usuarios = JSON.parse(localStorage.getItem('usuariosRegistrados')) || [];
 
+    // Verificar si el correo ya está registrado
+    const existe = usuarios.some(u => u.correo === correo);
+    if (existe) {
+        document.getElementById('modal-mensaje').textContent = 'El correo ya está registrado.';
+        document.getElementById('modal').style.display = 'block';
+        return;
+    }
+
+    // Agregar el nuevo usuario
+    usuarios.push({ nombre, correo, contrasena });
+
+    localStorage.setItem('usuariosRegistrados', JSON.stringify(usuarios));
     // Opcional: mostrar mensaje de éxito
     document.getElementById('modal-mensaje').textContent = '¡Registro exitoso!';
     document.getElementById('modal').style.display = 'block';
