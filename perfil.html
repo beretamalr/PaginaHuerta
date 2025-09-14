@@ -24,16 +24,27 @@
     <main>
         <section class="perfil-container">
             <div class="perfil-card">
-                <img src="img/perfil-default.png" alt="Foto de perfil" class="perfil-foto">
-                <div class="perfil-info" >
-                    <p><strong>Nombre:</strong> <span id="perfil-usuario"></span></p>
-                    <p><strong>Correo:</strong> <span id="perfil-correo"></span></p>
-                </div>
-                <div class="perfil-actions">
-                    <button class="btn">Editar</button>
-                    <!-- Botón para cerrar sesión -->
-                    <button class="btn btn-logout" onclick="window.location.href='inicioSesion.html';">Cerrar sesión</button>
-                </div>
+                    <img id="perfil-foto" src="img/perfil-default.png" alt="Foto de perfil" class="perfil-foto">
+                    <div class="perfil-info" id="perfil-info">
+                        <p><strong>Nombre:</strong> <span id="perfil-usuario"></span></p>
+                        <p><strong>Correo:</strong> <span id="perfil-correo"></span></p>
+                    </div>
+                    <form id="perfil-form" class="perfil-form" style="display:none;">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" name="nombre" required>
+                        <label for="correo">Correo:</label>
+                        <input type="email" id="correo" name="correo" required>
+                        <label for="foto">Foto de perfil:</label>
+                        <input type="file" id="foto" name="foto" accept="image/*">
+                        <div class="perfil-form-actions">
+                            <button type="submit" class="btn">Guardar</button>
+                            <button type="button" class="btn" id="cancelar-edicion">Cancelar</button>
+                        </div>
+                    </form>
+                    <div class="perfil-actions">
+                        <button class="btn" id="editar-perfil">Editar</button>
+                        <button class="btn btn-logout" onclick="window.location.href='inicioSesion.html';">Cerrar sesión</button>
+                    </div>
             </div>
         </section>
     </main>

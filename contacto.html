@@ -24,20 +24,22 @@
     </div>
     <div class="contacto-container">
         <h2>Contacto</h2>
-        <form id="contacto-form">
-            <div class="input-group">
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" required>
+        <form id="contacto-form" class="form-lineal">
+            <div class="form-lineal-campos">
+                <div class="input-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="input-group">
+                    <label for="mensaje">Mensaje:</label>
+                    <textarea id="mensaje" name="mensaje" rows="2" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Enviar</button>
             </div>
-            <div class="input-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="input-group">
-                <label for="mensaje">Mensaje:</label>
-                <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
-            </div>
-            <button type="submit" class="submit-btn">Enviar</button>
         </form>
     </div>
 </body>

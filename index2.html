@@ -17,7 +17,7 @@
                     <a href="blog.html" class="nav-link">📰 Blog</a>
                     <a href="perfil.html" class="nav-link">👤 Perfil</a>
                     <a href="contacto.html" class="nav-link">✉️ Contacto</a>
-                    <a href="carrito.html" class="nav-link">🛒 Carrito</a>
+                    <a href="carrito.html" class="nav-link">🛒 Carrito <span id="contador-carrito" style="background:#e74c3c;color:#fff;border-radius:50%;padding:2px 7px;font-size:0.9em;vertical-align:top;margin-left:2px;"></span></a>
                 </nav>
             </div>
         </header>
@@ -33,29 +33,73 @@
         <section class="destacados">
             <h2 class="destacados-titulo">Ofertas Destacadas</h2>
             <div class="productos-grid">
-                <div class="producto-card">
+                <div class="producto-card" data-id="1" data-nombre="Tomates Orgánicos" data-precio="$1.610 /kg" data-imagen="VerdurasImg/tomate.png">
                     <img src="VerdurasImg/tomate.png" alt="Tomate" class="producto-img">
                     <h3>Tomates Orgánicos</h3>
-                    <h4 class="precio" id="precio-frutas">Precio: $1.610 /kg </h4>
-                    <button class="btn">Agregar al carrito</button>
+                    <h4 class="precio">Precio: $1.610 /kg </h4>
+                    <button class="btn agregar-carrito">Agregar al carrito</button>
                 </div>
-                <div class="producto-card">
+                <div class="producto-card" data-id="2" data-nombre="Lechugas Frescas" data-precio="$1.180 c/u" data-imagen="img/lechuga.jpg">
                     <img src="img/lechuga.jpg" alt="Lechuga" class="producto-img">
                     <h3>Lechugas Frescas</h3>
-                    <h4 class="precio" id="precio-frutas">Precio: $1.180 c/u</h4>
-                    <button class="btn">Agregar al carrito</button>
+                    <h4 class="precio">Precio: $1.180 c/u</h4>
+                    <button class="btn agregar-carrito">Agregar al carrito</button>
                 </div>
-                <div class="producto-card">
+                <div class="producto-card" data-id="3" data-nombre="Zanahorias Frescas" data-precio="$1.200 /kg" data-imagen="VerdurasImg/Zanahoria.png">
                     <img src="VerdurasImg/Zanahoria.png" alt="Zanahoria" class="producto-img">
                     <h3>Zanahorias Frescas</h3>
-                    <h4 class="precio" id="precio-frutas">Precio: $1.200 /kg</h4>
-                    <button class="btn">Agregar al carrito</button>
+                    <h4 class="precio">Precio: $1.200 /kg</h4>
+                    <button class="btn agregar-carrito">Agregar al carrito</button>
                 </div>
             </div>
         </section>
         <div style="display:flex; justify-content:center; margin:32px 0;">
             <a href="tienda.html" class="btn btn-ver-productos">Ver productos</a>
         </div>
+        <!-- Modal para elegir cantidad -->
+        <div id="modal-cantidad" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.4); justify-content:center; align-items:center; z-index:1000;">
+            <div style="background:#fff; padding:32px; border-radius:16px; text-align:center; min-width:300px;">
+                <h3 id="modal-nombre"></h3>
+                <img id="modal-imagen" src="" alt="" style="width:80px; margin-bottom:16px;">
+                <p>¿Cuántos kg deseas agregar?</p>
+                <input type="number" id="modal-cantidad-input" min="1" value="1" style="width:80px;">
+                <br><br>
+                <button onclick="confirmarCantidad()">Confirmar</button>
+                <button onclick="cerrarModalCantidad()" style="margin-left:16px;">Cancelar</button>
+            </div>
+        </div>
+        <script>
+        // Script para manejar los botones de agregar al carrito en index2.html con modal de cantidad
+        document.addEventListener('DOMContentLoaded', function() {
+            const botones = document.querySelectorAll('.agregar-carrito');
+            function actualizarContadorCarrito() {
+                let carrito = JSON.parse(localStorage.getItem('carritoHuerta')) || [];
+                let total = carrito.length;
+                let contador = document.getElementById('contador-carrito');
+                if (contador) {
+                    contador.textContent = total > 0 ? total : '';
+                }
+            }
+            botones.forEach(boton => {
+                boton.addEventListener('click', function() {
+                    const card = boton.closest('.producto-card');
+                    const producto = {
+                        id: parseInt(card.getAttribute('data-id')),
+                        nombre: card.getAttribute('data-nombre'),
+                        precio: card.getAttribute('data-precio'),
+                        imagen: card.getAttribute('data-imagen')
+                    };
+                    // Usar la función global abrirModalCantidad si existe
+                    if (typeof abrirModalCantidad === 'function') {
+                        abrirModalCantidad(producto);
+                    } else {
+                        alert('No se encontró la función abrirModalCantidad');
+                    }
+                });
+            });
+            actualizarContadorCarrito();
+        });
+        </script>
     </body>
 
     <footer>
